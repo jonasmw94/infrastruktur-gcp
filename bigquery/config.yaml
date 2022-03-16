@@ -1,0 +1,6 @@
+imports:
+- path: bigquery.py
+
+resources:
+- name: bigquery
+  type: bigquery.py

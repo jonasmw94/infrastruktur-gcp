@@ -1,0 +1,6 @@
+imports:
+- path: pubsub.py
+
+resources:
+- name: pubsub
+  type: pubsub.py

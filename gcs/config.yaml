@@ -1,0 +1,6 @@
+imports:
+- path: gcs.py
+
+resources:
+- name: gcs
+  type: gcs.py

@@ -1,0 +1,6 @@
+imports:
+- path: vm.py
+
+resources:
+- name: vm
+  type: vm.py
