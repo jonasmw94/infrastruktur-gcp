@@ -1,0 +1,6 @@
+imports:
+- path: compute_engine_vm/vm-template.py
+
+resources:
+- name: vm
+  type: vm.jinja
