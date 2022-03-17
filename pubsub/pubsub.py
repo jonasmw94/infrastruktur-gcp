@@ -1,10 +1,11 @@
 def GenerateConfig(context):
     """Generate configuration."""
 
-    TOPIC_NAME = 'my-topic'
-    SUBSCRIPTION_NAME = 'my-sub'
+    TOPIC_NAME = 'udir-topic'
+    SUBSCRIPTION_NAME = 'udir-sub'
 
     resources = []
+
     resources.append({
         'name': TOPIC_NAME,
         'type': 'gcp-types/pubsub-v1:projects.topics',
@@ -19,6 +20,11 @@ def GenerateConfig(context):
         'properties': {
             'subscription': SUBSCRIPTION_NAME,
             'topic': "$(ref.%s.name)".format(TOPIC_NAME)
+        },
+        'metadata': {
+            'dependsOn': [
+                TOPIC_NAME
+            ]
         }
     })
 
