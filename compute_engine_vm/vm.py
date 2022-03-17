@@ -6,7 +6,7 @@ def GenerateConfig(context):
         'name': 'vm-' + context.env['deployment'],
         'type': 'compute.v1.instance',
         'properties': {
-            'zone': 'us-central1-a',
+            'zone': context.properties['zone'],
             'machineType': ''.join(['zones/', context.properties['zone'], '/machineTypes/n1-standard-1']),
             'disks': [{
                 'deviceName': 'boot',
