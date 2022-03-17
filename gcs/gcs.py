@@ -1,11 +1,9 @@
 def GenerateConfig(context):
     """Generate configuration."""
 
-    BUCKET_NAME = '%s-resources'.format(env['project'])
-
     resources = []
     resources.append({
-        'name': BUCKET_NAME,
+        'name': context.properties['bucketName'],
         'type': 'gcp-types/storage-v1:buckets',
         'properties': {
             'predefinedAcl': 'projectPrivate',

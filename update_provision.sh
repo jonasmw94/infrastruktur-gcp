@@ -8,4 +8,6 @@ echo "Deploying pub sub"
 ~/Downloads/google-cloud-sdk/bin/gcloud deployment-manager deployments update test-pub-sub --template ./pubsub/pubsub.jinja --properties topicName:udir-topic,subscriptionName:udir-sub
 
 echo "Deploying google cloud storage"
-gcloud deployment-manager deployments update test-gcs --config ./gcs/config.yaml
+~/Downloads/google-cloud-sdk/bin/gcloud deployment-manager deployments update test-gcs --config ./gcs/config.yaml
+
+~/Downloads/google-cloud-sdk/bin/gsutil notification create -t $topicName -f json gs://$bucketName
