@@ -3,6 +3,12 @@ DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 . "$DIR/common.sh"
 
+echo "Deploying google cloud storage"
+~/Downloads/google-cloud-sdk/bin/gcloud deployment-manager deployments create test-gcs \
+    --template ./gcs/gcs.py \
+    --properties bucketName:$bucketName \
+    --quiet
+
 echo "Provisioning compute VM"
 ~/Downloads/google-cloud-sdk/bin/gcloud deployment-manager deployments create test-vm \
     --template ./compute_engine_vm/vm.py \
@@ -21,14 +27,10 @@ echo "Deploying pub sub"
     --properties topicName:$topicName,subscriptionName:$subscriptionName \
     --quiet
 
-echo "Deploying google cloud storage"
-~/Downloads/google-cloud-sdk/bin/gcloud deployment-manager deployments create test-gcs \
-    --template ./gcs/gcs.py \
-    --properties bucketName:$bucketName \
-    --quiet
-
+cd cloud_function
 echo "Deploying function"
 ~/Downloads/google-cloud-sdk/bin/gcloud functions deploy testPubSub --trigger-topic $topicName  --runtime nodejs16
+cd ..
 
 echo "ADDING SUBSCRIPTION TO LISTEN FOR NOTIFICATIONS"
 ~/Downloads/google-cloud-sdk/bin/gsutil notification create -t $topicName -f json gs://$bucketName

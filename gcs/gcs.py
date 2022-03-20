@@ -8,7 +8,7 @@ def GenerateConfig(context):
         'properties': {
             'predefinedAcl': 'projectPrivate',
             'projection': 'full',
-            'location': 'US',
+            'location': 'EU',
             'storageClass': 'STANDARD'
         }
     })

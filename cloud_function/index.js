@@ -1,4 +1,4 @@
-exports.helloPubSub = (message, context) => {
+exports.testPubSub = (message, context) => {
     const name = message.data
         ? Buffer.from(message.data, 'base64').toString()
         : 'World';
