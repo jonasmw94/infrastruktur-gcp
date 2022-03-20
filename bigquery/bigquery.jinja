@@ -1,0 +1,29 @@
+{% set DATASET_NAME = (properties['project'] + "-dataset")|replace("-","_") %}
+{% set TABLE_NAME = "transaction" %}
+
+
+resources:
+# Dataset Resource
+- name: {{ DATASET_NAME }}
+  type: gcp-types/bigquery-v2:datasets
+  properties:
+    datasetReference:
+      datasetId: {{ DATASET_NAME }}
+      description: The {{ DATASET_NAME }} dataset contains all the tables for employees.
+      location: US
+
+# Employee Table
+- name: {{ TABLE_NAME }}
+  type: gcp-types/bigquery-v2:tables
+  properties:
+    datasetId: $(ref.{{ DATASET_NAME }}.datasetReference.datasetId)
+    tableReference:
+      tableId: {{ TABLE_NAME }}
+    schema:
+          fields:
+          - name: transaction_id
+            type: string
+            mode: REQUIRED
+          - name: transaction_name
+            type: string
+            mode: REQUIRED

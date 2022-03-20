@@ -1,0 +1,10 @@
+imports:
+- path: cloudfunction.jinja
+
+resources:
+- name: my-function
+  type: cloudfunction.jinja
+  properties:
+     region: REGION_TO_RUN
+     entryPoint: handler
+     runtime: nodejs8

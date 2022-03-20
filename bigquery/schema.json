@@ -1,0 +1,12 @@
+[
+    {
+        "name": "transaction_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "file_id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    }
+]

@@ -3,6 +3,12 @@ DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 . "$DIR/common.sh"
 
+echo "Provisioning cloud function"
+gcloud functions deploy helloGCS \
+--runtime nodejs16 \
+--trigger-resource YOUR_TRIGGER_BUCKET_NAME \
+--trigger-event google.storage.object.finalize
+
 echo "Provisioning compute VM"
 ~/Downloads/google-cloud-sdk/bin/gcloud deployment-manager deployments create test-vm \
     --template ./compute_engine_vm/vm.py \
