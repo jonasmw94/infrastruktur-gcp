@@ -22,11 +22,11 @@
     "dependencies": {
       "@google-cloud/debug-agent": "^5.0.0",
       "@google-cloud/functions-framework": "^2.0.0",
+      "@google-cloud/bigquery": "^5.0.0",
       "escape-html": "^1.0.3"
     },
     "devDependencies": {
       "@google-cloud/pubsub": "^2.0.0",
-      "@google-cloud/storage": "^5.0.0",
       "gaxios": "^4.3.2",
       "mocha": "^9.0.0",
       "moment": "^2.24.0",
